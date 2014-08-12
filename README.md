@@ -1,4 +1,4 @@
-AndroidDevResource
+AndroidDevTips
 ==================
 
-Android开发资源列表
+Android开发技巧集
