@@ -8,3 +8,5 @@
 	
 	TextView textView = (TextView)findViewById(R.id.testView);   
 	textView.setText(Html.fromHtml("<u>"+"content"+"</u>"));  
+
+via:[http://my.oschina.net/u/1053973/blog/134421](http://my.oschina.net/u/1053973/blog/134421)
