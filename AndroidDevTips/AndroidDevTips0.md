@@ -1,33 +1,33 @@
 
-###1. Minimum Required SDK
+### 1. Minimum Required SDK
 
 用API level表示你的应用支持的最低Android版本，为了支持尽可能多的设备，你应该设置为能支持你应用核心功能的最低API版本。如果某些非核心功能	尽	在较高版本的API支持，你可以只在支持这些功能的版本上开启它们(参考Supporting Different Platform Versions),此处采用默认值即可。
 	
-###2. Target SDK
+### 2. Target SDK
 
 表示你测试过你的应用支持的最高Android版本(同样用API level表示).当Android发布最新版本后，你应该在最新版本的Android测试你的应用同时更新target sdk到Android最新版本，以便充分利用Android新版本的特性。
 
-###3. Compile With
+### 3. Compile With
 
 是你的应用将要编译的目标Android版本，此处默认为你的SDK已安装的最新Android版本(目前应该是4.1或更高版本，如果你没有安装一个可用Android版	本，就要先用SDK Manager来完成安装)，你仍然可以使用较老的版本编译项目，但把该值设为最新版本，你可以使用Android的最新特性同时可以优化应用	来提高用户体验，运行在最新的设备上.
 
-###4. 列举Android SDK下载好的可用platforms
+### 4. 列举Android SDK下载好的可用platforms
 
 	android list targets
 
-###5. 命令行创建项目
+### 5. 命令行创建项目
 
 	android create project --target <target-id> --name MyFirstApp \ --path <path-to-workspace>/MyFirstApp --activity MainActivity \ --package com.example.myfirstapp
 		
-###6. 命令行安装应用
+### 6. 命令行安装应用
 
 	adb install Apk安装包完整路径
 		
-###7. 命令行打开Android Virtual Device Manager
+### 7. 命令行打开Android Virtual Device Manager
 
 	android avd
 		
-###8. android:onClick属性
+### 8. android:onClick属性
 
 `android:onClick`属性中提供的方法名字匹配，它们的名字必须一致，特别是，这个方法必须满足以下条件： 公共的 没有返回值 有一个唯一的视图（View）参数（这个视图就是将被点击的视图） 接下来，你可以在这个方法中编写读取文本内容的代码，并将该内容传到另一个Activity。
 		
@@ -44,7 +44,7 @@
             android:value="com.example.myfirstapp.MainActivity" />
     </activity>
     	
-###10. Menu Item的android:showAsAction属性
+### 10. Menu Item的android:showAsAction属性
  
 这个属性可接受的值有：
 		
@@ -66,7 +66,7 @@
     			...
 	</menu>
 
-###11. 为下级 Activity 添加向上按钮
+### 11. 为下级 Activity 添加向上按钮
 
 当运行在 `Android 4.1(API level 16)` 或更高版本，或者使用 `Support` 库中的 `ActionBarActivity` 时，实现向上导航需要你在 `manifest` 文件中声明父 `activity` ，同时在 `action bar` 中设置向上按钮可用。
 	
@@ -92,7 +92,7 @@
     	// getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
-###12. Action Bar 风格化
+### 12. Action Bar 风格化
 
 > 注释：如果你为 `action bar` 使用了 Support 库的 API，那你必须使用（或重写） `Theme.AppCompat` 家族式样（甚至 `Theme.Holo` 家族，在 `API level 11 或更高版本中可用）`。如此一来，你声明的每一个式样属性都必须被声明两次：一次使用平台的式样属性（`android:` 属性），另一次使用 Support 库中的式样属性（`appcompat.R.attr`属性 —— 这些属性的上下文其实就是你的app）。更多细节请查看下面的示例。
 
@@ -119,7 +119,7 @@ Android 包含两个基本的 activity 主题，这两个主题决定了 action 
 
 一定要确保你使用的 `action bar icon` 的颜色与 `action bar` 本身的颜色有差异。为了能帮助到你，`Action Bar Icon Pack` 为 Holo “暗”和“淡”的` action bar` 提供了标准的 `action icon`。
 
-####自定义背景
+#### 13. 自定义背景
 	
 为 `activity` 创建一个自定义主题，通过重写 `actionBarStyle` 属性来改变 `action bar` 的背景。`actionBarStyle` 属性指向另一个式样；在该式样里，通过指定一个 `drawable` 资源来重写 `background` 属性。
 
@@ -182,7 +182,7 @@ res/values/themes.xml
 
 	<application android:theme="@style/CustomActionBarTheme" ... />
 
-####自定义文本颜色
+#### 14. 自定义文本颜色
 
 修改 `action bar` 中的文本颜色，你需要分别重写每个元素的属性：
 
@@ -273,7 +273,7 @@ res/values/themes.xml
     	</style>
 	</resources>
 	
-####自定义 Tab Indicator
+#### 15. 自定义 Tab Indicator
 
 为 activity 创建一个自定义主题，通过重写 `actionBarTabStyle` 属性来改变 `navigation tabs` 使用的指示器。`actionBarTabStyle` 属性指向另一个式样资源；在该式样资源里，通过指定一个状态列表 `drawable` 来重写 `background` 属性。
 
@@ -379,7 +379,7 @@ res/values/themes.xml
 > * 学习更多式样的工作机制，请查看 [式样和主题](https://developer.android.com/guide/topics/ui/themes.html) 指南
 > * 全面的 action bar 式样，请尝试 [Android Action Bar](http://www.actionbarstylegenerator.com/) 式样生成器	
 
-###13.适配不同的语言
+### 16.适配不同的语言
 
 为了支持多国语言，在 `res/` 中创建一个额外的 values 目录以连字符和ISO国家代码结尾命名，比如 `values-es/` 是包含简单的区域资源，语言代码为"es"的区域设置目录。Android会在运行时根据设备的区域设置，加载相应的资源。
 
@@ -398,7 +398,7 @@ res/values/themes.xml
 
 在运行时，Android系统会根据用户设备当前的区域设置，使用相应的字符串资源。
 
-###14.使用字符资源
+### 17.使用字符资源
 
 你可以在你的源代码和其他XML文件中，通过 `<string>` 元素的 `name` 属性来引用你的字符串资源。
 
@@ -421,12 +421,12 @@ res/values/themes.xml
     	android:layout_height="wrap_content"
     	android:text="@string/hello_world" />
     	
-###15.获取SharedPreference
+### 18.获取SharedPreference
 
 * **getSharedPreferences()** — 如果你需要多个通过名称参数来区分的shared preference文件, 名称可以通过第一个参数来指定。你可以在你的app里面通过任何一个Context 来执行这个方法。
 * **getPreferences()** — 当你的activity仅仅需要一个shared preference文件时。因为这个方法会检索activitiy下的默认的shared preference文件，并不需要提供文件名称
 
-###16.android:installLocation
+### 19.android:installLocation
 
 `android:installLocation` 属性来指定程序也可以被安装到external storage
 
@@ -443,14 +443,14 @@ res/values/themes.xml
 	* 当用户卸载你的app时，系统仅仅会删除external根目录（ `getExternalFilesDir()` ）下的相关文件。
 	* External是在你不需要严格的访问权限并且你希望这些文件能够被其他app所共享或者是允许用户通过电脑访问时的最佳存储区域。
 
-###17.保存到Internal Storage
+### 20.保存到Internal Storage
 
 * **getFilesDir()** : 返回一个 File ，代表了你的app的internal目录。
 * **getCacheDir()** : 返回一个 File ，代表了你的app的internal缓存目录。请确保这个目录下的文件在一旦不再需要的时候能够马上被删除，还有请给予一个合理的大小，例如1MB 。如果系统的内存不够，会自行选择删除缓存文件。为了在那些目录下创建一个新的文件，你可以使用 File() 构造器，如下：
 
 		File file = new File(context.getFilesDir(), filename);
 		
-###18.保存文件到External Storage
+### 21.保存文件到External Storage
 
 因为external storage可能是不可用的，那么你应该在访问之前去检查是否可用。你可以通过执行 getExternalStorageState() 来查询external storage的状态。如果返回的状态是MEDIA_MOUNTED, 那么你可以读写。示例如下：
 
@@ -514,7 +514,7 @@ public File getAlbumStorageDir(Context context, String albumName) {
 
 不管你是使用 `getExternalStoragePublicDirectory()` 来存储可以共享的文件，还是使用 getExternalFilesDir() 来储存那些对与你的app来说是私有的文件，有一点很重要，那就是你要使用那些类似`DIRECTORY_PICTURES` 的API的常量。那些目录类型参数可以确保那些文件被系统正确的对待。例如，那些以`DIRECTORY_RINGTONES` 类型保存的文件就会被系统的media scanner认为是ringtone而不是音乐。
 
-###19.查询剩余空间
+### 22.查询剩余空间
 
 如果你事先知道你想要保存的文件大小，你可以通过执行 [getFreeSpace()](http://developer.android.com/reference/java/io/File.html#getFreeSpace(\)) or [getTotalSpace()](http://developer.android.com/reference/java/io/File.html#getTotalSpace(\)) 来判断是否有足够的空间来保存文件，从而避免发生IOException。那些方法提供了当前可用的空间还有存储系统的总容量。并没有强制要求在写文件之前一定有要去检查剩余容量。你可以尝试先做写的动作，然后通过捕获 IOException 。这种做法仅适合于你并不知道你想要写的文件的确切大小。
 
@@ -533,7 +533,7 @@ public File getAlbumStorageDir(Context context, String albumName) {
 >* 所有保存到internal storage的文件。
 >* 所有使用getExternalFilesDir()方式保存在external storage的文件 然而，你应该手动删除所有通过 getCacheDir() 方式创建的缓存文件，还有那些通常来说不会再用的文件。
 
-### 21.定义Schema与Contract
+### 23.定义Schema与Contract
 
 SQL中一个中重要的概念是schema：一种DB结构的正式声明。schema是从你创建DB的SQL语句中生成的。你可能会发现创建一个创建一个伴随类（companion class）是很有益的，这个类成为合约类（contract class）,它用一种系统化并且自动生成文档的方式，显示指定了你的schema样式。
 
@@ -561,7 +561,7 @@ public static abstract class FeedEntry implements BaseColumns {
 private FeedReaderContract() {}
 ```
 
-### 22.验证是否有App可以handle某个intent
+### 24.验证是否有App可以handle某个intent
 下面是一个完整的例子，演示了如何创建一个intent来查看地图
 
 ```
@@ -579,7 +579,7 @@ if (isIntentSafe) {
     startActivity(mapIntent);
 }
 ```
-### 23.显示一个App选择界面
+### 25.显示一个 App 选择界面
 
 为了显示chooser, 需要使用createChooser()来创建Intent
 
@@ -596,7 +596,7 @@ startActivity(chooser);
 
 ![image](http://hukai.me/android-training-course-in-chinese/basics/intents/intent-chooser.png)
 
-### 24.接收Activity返回的结果
+### 26.接收 Activity 返回的结果
 
 启动另外一个activity并不一定是单向的。你也可以启动另外一个activity然后接受一个result回来。为了接受这个result,你需要使用 `startActivityForResult()` (而不是startActivity())。
 
@@ -608,7 +608,7 @@ startActivity(chooser);
 
 对于 `startActivityForResult()` 方法中的intent与之前介绍的并没有什么差异，只不过是需要在这个方法里面多添加一个int类型的参数。这个integer的参数叫做"request code"，它标识了你的请求。当你接收到result Intent时，可以从回调方法里面的参数去判断这个result是否是你想要的。
 
-### 25.Intent Filter
+### 27.Intent Filter
 
 为了尽可能确切的定义你的activity能够handle哪些intent，每一个intent filter都应该尽可能详尽的定义好action与data。
 
